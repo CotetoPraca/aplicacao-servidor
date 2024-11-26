@@ -20,11 +20,6 @@ import java.util.concurrent.CompletableFuture;
  * Classe responsável por configurar e gerenciar as interações entre o cliente e o servidor CoAP da aplicação.
  */
 public class CoapHandler {
-
-    //private static final int SERVER_PORT = 5682;
-    //private static final String SERVICE_BUS_HOST = "192.168.0.8";
-    //private static final int SERVICE_BUS_PORT = 5683;
-
     private static final String SERVICE_BUS_ENDPOINT = ConfigLoader.getConfigValue("coap.barramento.endpoint");
     private static final String SERVICE_BUS_HOST = ConfigLoader.getConfigValue("coap.barramento.host");
     private static final int SERVICE_BUS_PORT = Integer.parseInt(ConfigLoader.getConfigValue("coap.barramento.porta"));

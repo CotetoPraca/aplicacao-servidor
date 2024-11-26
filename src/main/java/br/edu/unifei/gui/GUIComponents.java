@@ -21,43 +21,43 @@ import java.util.Objects;
  * Classe que define a interface comum.
  */
 public abstract class GUIComponents {
-    protected LogTextAreaUtils logTextArea;
+    protected final LogTextAreaUtils logTextArea;
 
     // Grupo: Janela principal
-    protected JFrame frame;
-    protected JPanel panel;
-    protected JPanel bottonPanel;
-    protected JButton cleanButton;
-    protected JButton enviarButton;
-    protected JButton voltarButton;
-    protected JTextArea respostaArea;
+    protected final JFrame frame;
+    protected final JPanel panel;
+    protected final JPanel bottonPanel;
+    protected final JButton cleanButton;
+    protected final JButton enviarButton;
+    protected final JButton voltarButton;
+    protected final JTextArea respostaArea;
 
     // Grupo: Ação
-    protected JLabel acaoLabel;
-    protected JComboBox<String> acaoComboBox;
+    protected final JLabel acaoLabel;
+    protected final JComboBox<String> acaoComboBox;
 
     // Grupo: Conteúdo
-    protected JPanel chaveValorPanel;
-    protected JLabel conteudoLabel;
-    protected JLabel chaveLabel;
-    protected JLabel valorLabel;
-    protected JTextField chaveField;
-    protected JTextField valorField;
-    protected JButton adicionarParButton;
-    protected JButton removerParButton;
-    protected JTextArea jsonArea;
+    protected final JPanel chaveValorPanel;
+    protected final JLabel conteudoLabel;
+    protected final JLabel chaveLabel;
+    protected final JLabel valorLabel;
+    protected final JTextField chaveField;
+    protected final JTextField valorField;
+    protected final JButton adicionarParButton;
+    protected final JButton removerParButton;
+    protected final JTextArea jsonArea;
 
     // Grupo: Destino
-    protected JLabel destinoLabel;
-    protected JTextField destinoField;
+    protected final JLabel destinoLabel;
+    protected final JTextField destinoField;
 
     // Grupo: Origem
-    protected JLabel origemLabel;
-    protected JTextField origemField;
+    protected final JLabel origemLabel;
+    protected final JTextField origemField;
 
     // Grupo: Serviço
-    protected JLabel servicoLabel;
-    protected JTextField servicoField;
+    protected final JLabel servicoLabel;
+    protected final JTextField servicoField;
 
     /**
      * Construtor da classe {@code UIComponents}. Inicializa a interface gráfica.
