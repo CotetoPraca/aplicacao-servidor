@@ -4,6 +4,7 @@ import br.edu.unifei.gui.GUIComponents;
 import br.edu.unifei.modelos.mensagem.Mensagem;
 import br.edu.unifei.utils.ConfigLoader;
 import br.edu.unifei.utils.LogUtils;
+import com.google.gson.JsonPrimitive;
 
 /**
  * Classe principal da aplicação MQTT, responsável pela interface gráfica.
@@ -40,7 +41,9 @@ public class MqttClientApp extends GUIComponents {
 
     @Override
     protected void customEnviarButtonAction(Mensagem mensagem) {
-        mensagem.adicionarTimestampAoMetadata("timestamp_servidor_msg_enviada");
+        mensagem.adicionarAoMetadata(
+                "timestamp_servidor_msg_enviada",
+                new JsonPrimitive(System.currentTimeMillis()));
         mqttClient.publish(SERVICE_BUS_TOPIC, mensagem.toJson());
 
         if (mensagem.getAcao().equals("REGISTRAR_SERVICO")) {

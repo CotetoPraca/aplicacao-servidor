@@ -5,6 +5,7 @@ import br.edu.unifei.tratamento.TratadorMensagem;
 import br.edu.unifei.tratamento.TratadorMensagemFactory;
 import br.edu.unifei.utils.LogTextAreaUtils;
 import br.edu.unifei.utils.LogUtils;
+import com.google.gson.JsonPrimitive;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
@@ -49,7 +50,9 @@ public class MqttCallbackHandler implements MqttCallback {
         Thread.sleep(50);
 
         Mensagem mensagemRecebida = Mensagem.fromJson(mensagem.toString());
-        mensagemRecebida.adicionarTimestampAoMetadata("timestamp_servidor_msg_recebida");
+        mensagemRecebida.adicionarAoMetadata(
+                "timestamp_servidor_msg_recebida",
+                new JsonPrimitive(System.currentTimeMillis()));
 
         String acao = mensagemRecebida.getAcao();
 

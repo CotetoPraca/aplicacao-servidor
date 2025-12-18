@@ -1,6 +1,7 @@
 package br.edu.unifei.modelos.mensagem;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
@@ -12,6 +13,7 @@ public class Mensagem {
     private final String origem;
     private final String destino;
     private final JsonObject conteudo;
+    private final JsonObject metadata;
 
     /**
      * Construtor que inicializa uma mensagem com os parâmetros fornecidos.
@@ -26,6 +28,7 @@ public class Mensagem {
         this.origem = origem;
         this.destino = destino;
         this.conteudo = conteudo;
+        this.metadata = new JsonObject();
     }
 
     /**
@@ -68,6 +71,13 @@ public class Mensagem {
     }
 
     /**
+     * @return o metadata da mensagem no formato {@link JsonObject}.
+     */
+    public JsonObject getMetadata() {
+        return metadata;
+    }
+
+    /**
      * Converte esta mensagem para uma string JSON.
      *
      * @return a representação JSON desta mensagem.
@@ -78,15 +88,12 @@ public class Mensagem {
     }
 
     /**
-     * Auxiliar para adicionar timestamps ao campo "metadata" da mensagem.
+     * Adiciona um campo arbitrário ao objeto {@code metadata} da mensagem.
      *
-     * @param campo Nome do campo do timestamp a ser adicionado (Ex.: "timestamp_envio").
+     * @param campo Nome do campo a ser adicionado ou atualizado no metadata.
+     * @param valor Valor em formato {@link JsonElement} a ser associado ao campo.
      */
-    public void adicionarTimestampAoMetadata(String campo) {
-        JsonObject metadata = this.conteudo.has("metadata")
-                ? this.conteudo.getAsJsonObject("metadata")
-                : new JsonObject();
-        metadata.addProperty(campo, System.currentTimeMillis());
-        this.conteudo.add("metadata", metadata);
+    public void adicionarAoMetadata(String campo, JsonElement valor) {
+        this.metadata.add(campo, valor);
     }
 }

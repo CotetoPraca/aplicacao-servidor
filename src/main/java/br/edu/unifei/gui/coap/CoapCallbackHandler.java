@@ -5,6 +5,7 @@ import br.edu.unifei.tratamento.TratadorMensagem;
 import br.edu.unifei.tratamento.TratadorMensagemFactory;
 import br.edu.unifei.utils.LogTextAreaUtils;
 import br.edu.unifei.utils.LogUtils;
+import com.google.gson.JsonPrimitive;
 import com.mbed.coap.packet.CoapRequest;
 import com.mbed.coap.packet.CoapResponse;
 import com.mbed.coap.packet.Code;
@@ -43,7 +44,9 @@ public class CoapCallbackHandler {
             LogUtils.logInfo("Mensagem recebida via CoAP: %s", payload);
 
             Mensagem mensagemRecebida = Mensagem.fromJson(payload);
-            mensagemRecebida.adicionarTimestampAoMetadata("timestamp_servidor_msg_recebida");
+            mensagemRecebida.adicionarAoMetadata(
+                    "timestamp_servidor_msg_recebida",
+                    new JsonPrimitive(System.currentTimeMillis()));
 
             String acao = mensagemRecebida.getAcao();
 
