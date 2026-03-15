@@ -26,12 +26,10 @@ public class TratadorConsultarAcaoAPI implements TratadorMensagem {
      */
     @Override
     public String processar(Mensagem mensagem) {
-        mensagem.adicionarAoMetadata(
-                "timestamp_servidor_processamento_inicio",
+        mensagem.adicionarAoMetadata("timestamp_servidor_processamento_inicio",
                 new JsonPrimitive(System.currentTimeMillis()));
         Mensagem resposta = servicoAlphaVantageAPI.executar(mensagem);
-        resposta.adicionarAoMetadata(
-                "timestamp_servidor_msg_enviada",
+        resposta.adicionarAoMetadata("timestamp_servidor_msg_enviada",
                 new JsonPrimitive(System.currentTimeMillis()));
         return resposta.toJson();
     }

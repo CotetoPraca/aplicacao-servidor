@@ -44,8 +44,7 @@ public class CoapCallbackHandler {
             LogUtils.logInfo("Mensagem recebida via CoAP: %s", payload);
 
             Mensagem mensagemRecebida = Mensagem.fromJson(payload);
-            mensagemRecebida.adicionarAoMetadata(
-                    "timestamp_servidor_msg_recebida",
+            mensagemRecebida.adicionarAoMetadata("timestamp_servidor_msg_recebida",
                     new JsonPrimitive(System.currentTimeMillis()));
 
             String acao = mensagemRecebida.getAcao();

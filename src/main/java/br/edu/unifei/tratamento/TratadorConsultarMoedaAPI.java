@@ -29,8 +29,7 @@ public class TratadorConsultarMoedaAPI implements TratadorMensagem {
     @Override
     public String processar(Mensagem mensagem) {
         Mensagem resposta = servicoAlphaVantageAPI.executar(mensagem);
-        resposta.adicionarAoMetadata(
-                "timestamp_servidor_msg_enviada",
+        resposta.adicionarAoMetadata("timestamp_servidor_msg_enviada",
                 new JsonPrimitive(System.currentTimeMillis()));
         return resposta.toJson();
     }

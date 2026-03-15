@@ -41,8 +41,7 @@ public class MqttClientApp extends GUIComponents {
 
     @Override
     protected void customEnviarButtonAction(Mensagem mensagem) {
-        mensagem.adicionarAoMetadata(
-                "timestamp_servidor_msg_enviada",
+        mensagem.adicionarAoMetadata("timestamp_servidor_msg_enviada",
                 new JsonPrimitive(System.currentTimeMillis()));
         mqttClient.publish(SERVICE_BUS_TOPIC, mensagem.toJson());
 

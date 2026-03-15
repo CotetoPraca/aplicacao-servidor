@@ -37,8 +37,7 @@ public class CoapApp extends GUIComponents {
 
     @Override
     protected void customEnviarButtonAction(Mensagem mensagem) {
-        mensagem.adicionarAoMetadata(
-                "timestamp_servidor_msg_enviada",
+        mensagem.adicionarAoMetadata("timestamp_servidor_msg_enviada",
                 new JsonPrimitive(System.currentTimeMillis()));
         coapHandler.sendMessage(mensagem.toJson());
 

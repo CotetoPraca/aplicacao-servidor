@@ -50,8 +50,7 @@ public class MqttCallbackHandler implements MqttCallback {
         Thread.sleep(50);
 
         Mensagem mensagemRecebida = Mensagem.fromJson(mensagem.toString());
-        mensagemRecebida.adicionarAoMetadata(
-                "timestamp_servidor_msg_recebida",
+        mensagemRecebida.adicionarAoMetadata("timestamp_servidor_msg_recebida",
                 new JsonPrimitive(System.currentTimeMillis()));
 
         String acao = mensagemRecebida.getAcao();
